@@ -20,15 +20,10 @@ Each route is an object with the required shape:
 
 ```js
 module.exports = {
-  /* .. */
-
   // A map from regular expressions to paths to transformers
   transform: {
-    /* .. */
     "^.+\\.(md|mdx)$": 'jest-transformer-mdx',
   },
-
-  /* .. */
 };
 ```
 
