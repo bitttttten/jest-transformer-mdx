@@ -4,7 +4,7 @@
   "description": "Jest transform for MD files",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -24,14 +24,18 @@
   },
   "homepage": "https://github.com/bitttttten/jest-transformer-md#readme",
   "dependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
     "@mdx-js/mdx": "^1.0.21",
+    "@mdx-js/react": "^1.0.21",
     "babel-preset-react-app": "^9.0.0",
     "gray-matter": "^4.0.2",
+    "prettier": "^1.18.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "stringify-object": "^3.3.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
     "@testing-library/react": "^8.0.4",
     "babel-jest": "^24.8.0",
     "jest": "^24.8.0"
