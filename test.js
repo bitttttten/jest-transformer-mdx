@@ -9,7 +9,7 @@ describe("jest transformer md", () => {
     expect(frontMatter.from).toBe("Batman");
     expect(frontMatter.location).toBe("Amsterdam");
   });
-  test("that it renders in react", () => {
+  test("that it still renders in react", () => {
     const { asFragment } = render(<Component />);
     expect(asFragment()).toMatchInlineSnapshot(`
       <DocumentFragment>

@@ -1,7 +1,7 @@
 {
-  "name": "jest-transformer-md",
-  "version": "1.0.1",
-  "description": "Jest transform for MD files",
+  "name": "jest-transformer-mdx",
+  "version": "1.0.0",
+  "description": "Jest transformer for MDX",
   "main": "index.js",
   "scripts": {
     "test": "jest"
