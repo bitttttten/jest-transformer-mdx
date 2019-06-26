@@ -22,5 +22,18 @@
   "bugs": {
     "url": "https://github.com/bitttttten/jest-transformer-md/issues"
   },
-  "homepage": "https://github.com/bitttttten/jest-transformer-md#readme"
+  "homepage": "https://github.com/bitttttten/jest-transformer-md#readme",
+  "dependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@mdx-js/mdx": "^1.0.21",
+    "babel-preset-react-app": "^9.0.0",
+    "gray-matter": "^4.0.2",
+    "stringify-object": "^3.3.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^8.0.4",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.8.0"
+  }
 }
