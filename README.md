@@ -16,8 +16,6 @@ A simple jest transformer for [MDX](https://mdxjs.com/) with [frontMatter](https
 
 ### Add to your jest config
 
-Each route is an object with the required shape:
-
 ```js
 module.exports = {
   // A map from regular expressions to paths to transformers
