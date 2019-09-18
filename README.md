@@ -1,4 +1,4 @@
-# jest-transformer-md
+# jest-transformer-mdx
 
 [![Github release version](https://img.shields.io/github/tag/bitttttten/jest-transformer-mdx.svg)](https://github.com/bitttttten/jest-transformer-mdx/releases)
 [![Commits since release](https://img.shields.io/github/commits-since/bitttttten/jest-transformer-mdx/v1.0.0.svg)](https://github.com/bitttttten/jest-transformer-mdx/compare/v1.0.0...master)
@@ -12,7 +12,7 @@ A simple jest transformer for [MDX](https://mdxjs.com/) with [frontMatter](https
 
 ### Install
 
-`yarn add jest-transformer-md`
+`yarn add jest-transformer-mdx`
 
 ### Add to your jest config
 
