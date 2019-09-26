@@ -34,9 +34,7 @@ Look inside [this library's test](https://github.com/bitttttten/jest-transformer
 
 ## Options
 
-In order to override the template or the config, [as raised in this issue](https://github.com/bitttttten/jest-transformer-mdx/issues/1), you should configure the `transform` option in your jest file to point to a local file.
-
-In this file you will import a function to setup the module, and then re-export the jest transformer which is exported as `process`.
+In order to override the template or the config, [as raised in this issue](https://github.com/bitttttten/jest-transformer-mdx/issues/1), you should configure the `transform` option in your jest file to point to a local file. In this file you will import a function to setup the module, and then re-export the jest transformer which is exported as `process`.
 
 Prefer real examples? [Look no more](#example-1).
 
