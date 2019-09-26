@@ -1,10 +1,12 @@
 {
   "name": "jest-transformer-mdx",
-  "version": "1.0.2",
+  "version": "1.1.0-beta",
   "description": "Jest transformer for MDX",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test-suite-a": "jest --config jest.config.suite-a.js",
+    "test-suite-b": "jest --config jest.config.suite-b.js",
+    "test": "npm run test-suite-a && npm run test-suite-b"
   },
   "repository": {
     "type": "git",
@@ -33,10 +35,13 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@babel/preset-env": "^7.6.2",
     "@testing-library/react": "^8.0.4",
     "babel-jest": "^24.8.0",
     "jest": "^24.8.0",
+    "preact": "^8.5.2",
+    "preact-render-to-string": "^4.1.0",
     "prettier": "^1.18.2",
     "react-dom": "^16.8.6"
   }

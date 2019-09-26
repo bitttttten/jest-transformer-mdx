@@ -2,7 +2,7 @@ import React from "react";
 import Component, { frontMatter } from "./test.md";
 import { render } from "@testing-library/react";
 
-describe("jest transformer md", () => {
+describe("jest transformer mdx - suite a", () => {
   test("that frontMatter is correct", () => {
     expect(frontMatter.title).toBe("Jest Transformer MD");
     expect(frontMatter.path).toBe("https://soulpicks.com");
