@@ -32,9 +32,11 @@ And that should be it!
 
 Look inside [this library's test](https://github.com/bitttttten/jest-transformer-mdx/blob/master/test.suite-a.js) and the related [markdown file](https://github.com/bitttttten/jest-transformer-mdx/blob/master/test.md) to see live a example.
 
-## Options
+## Customising
 
-In order to override the template or the config, [as raised in this issue](https://github.com/bitttttten/jest-transformer-mdx/issues/1), you should configure the `transform` option in your jest file to point to a local file. In this file you will import a function to setup the module, and then re-export the jest transformer which is exported as `process`.
+This module ships with the defaults from [create-react-app](https://github.com/facebook/create-react-app). If that does not suite your project, then you are able to configure the module. Since it's not possible to cleanly configure a jest transformer, this is the simpliest way I know of.
+
+In order to configure the module, [as raised in this issue](https://github.com/bitttttten/jest-transformer-mdx/issues/1), you should configure the `transform` option in your jest file to point to a local file. In this file you will import a function to setup the module, and then re-export the jest transformer which is exported as `process`.
 
 Prefer real examples? [Look no more](#example-1).
 
