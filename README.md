@@ -17,6 +17,7 @@ A simple jest transformer for [MDX](https://mdxjs.com/) with [frontMatter](https
 ### Add to your jest config
 
 ```js
+// jest.config.js
 module.exports = {
   // A map from regular expressions to paths to transformers
   transform: {
@@ -29,15 +30,53 @@ And that should be it!
 
 ### Example
 
-Look inside [this library's test](https://github.com/bitttttten/jest-transformer-mdx/blob/master/test.js) and the related [markdown file](https://github.com/bitttttten/jest-transformer-mdx/blob/master/test.md) to see live a example.
+Look inside [this library's test](https://github.com/bitttttten/jest-transformer-mdx/blob/master/test.suite-a.js) and the related [markdown file](https://github.com/bitttttten/jest-transformer-mdx/blob/master/test.md) to see live a example.
 
 ## Options
 
-In order to override the template or the config, [as raised in this issue](https://github.com/bitttttten/jest-transformer-mdx/issues/1), you should configure this module in one of your setupFiles from jest.
+In order to override the template or the config, [as raised in this issue](https://github.com/bitttttten/jest-transformer-mdx/issues/1), you should configure the `transform` option in your jest file to point to a local file.
 
-### Example
+In this file you will import a function to setup the module, and then re-export the jest transformer which is exported as `process`.
 
-[This test suite setupFile](./setupFile.suite-b.js) illustrates how to setup the transform for preact.
+Prefer real examples? [Look no more](#example-1).
+
+```js
+// jest.config.js
+module.exports = {
+  // A map from regular expressions to paths to transformers
+  transform: {
+    "^.+\\.(md|mdx)$": path.resolve(__dirname, "jest-transformer-mdx.js")
+  },
+};
+```
+
+```js
+// jest-transformer-mdx.js
+const { config, process: createTransformer } = require("jest-transformer-mdx")
+
+config({
+  babelOptions: {
+    presets: [require("@babel/preset-env")],
+    plugins: [
+      [
+        "@babel/plugin-transform-react-jsx",
+        {
+          pragma: "h",
+          throwIfNamespace: false
+        }
+      ]
+    ],
+    babelrc: false,
+    configFile: false,
+    filename: "null"
+  },
+  transformer: jsx => `import { h as mdx } from 'preact';${jsx}`
+});
+
+module.exports = {
+	process: createTransformer,
+}
+```
 
 ### API
 
@@ -51,7 +90,11 @@ This will be the options object passed into babel.
 
 #### transform
 
-This is a callback that is passed the output from parsing the md file by mdx-js. This callback runs before the code gets passed into babel. By default, this is where we inject the import for the mdx pragma.
+This is a callback that is passed the output as a string from parsing the raw md by mdx-js. This will run before the code gets passed into babel. By default, this is where we inject the import for the mdx pragma.
+
+### Example
+
+[This jest config](./jest.config.suite-b.js), and [this jest-transformer-mdx](./jest-transformer-mdx.suite-b.js) illustrate how to setup the transform for preact.
 
 ## Credits
 
