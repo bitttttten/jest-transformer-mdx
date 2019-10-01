@@ -31,11 +31,12 @@
     "react": "^16.8.6",
     "stringify-object": "^3.3.0"
   },
+  "peerDependencies": {
+    "babel-jest": "^24.8.0"
+  },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-env": "^7.6.2",
     "@testing-library/react": "^8.0.4",
-    "babel-jest": "^24.8.0",
     "jest": "^24.8.0",
     "prettier": "^1.18.2",
     "react-dom": "^16.8.6"
