@@ -11,7 +11,7 @@ function parseFrontMatter(src) {
     return `export const frontMatter = ${stringifyObject(
         data,
     )};
-    
+
 ${content}`
 }
 
