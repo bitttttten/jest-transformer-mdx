@@ -4,7 +4,9 @@
   "description": "Jest transformer for MDX",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test:index": "jest --config jest.config.js",
+    "test:cra": "jest --config jest.config.cra.js",
+    "test": "npm run test:index && npm run test:cra"
   },
   "repository": {
     "type": "git",
@@ -35,6 +37,7 @@
     "babel-jest": "^24.8.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
     "@testing-library/react": "^8.0.4",
     "jest": "^24.8.0",

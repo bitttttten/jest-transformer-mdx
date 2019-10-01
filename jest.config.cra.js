@@ -163,7 +163,7 @@ module.exports = {
   // A map from regular expressions to paths to transformers
   transform: {
     "^.+\\.js$": "babel-jest",
-    "^.+\\.(md|mdx)$": path.resolve(__dirname, "index.js")
+    "^.+\\.(md|mdx)$": path.resolve(__dirname, "cra.js")
   },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation

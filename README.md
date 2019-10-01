@@ -17,6 +17,7 @@ A simple jest transformer for [MDX](https://mdxjs.com/) with [frontMatter](https
 ### Add to your jest config
 
 ```js
+// jest.config.js
 module.exports = {
   // A map from regular expressions to paths to transformers
   transform: {
@@ -25,11 +26,25 @@ module.exports = {
 };
 ```
 
-And that should be it!
+And that should be it! `jest-transformer-mdx` will pick up your babel config and use your jest config.
 
 ### Example
 
 Look inside [this library's test](https://github.com/bitttttten/jest-transformer-mdx/blob/master/test.js) and the related [markdown file](https://github.com/bitttttten/jest-transformer-mdx/blob/master/test.md) to see live a example.
+
+### create-react-app & configless
+
+You can also use this module in `create-react-app`-like apps where the config is not exposed. Just edit your transform property to import from `jest-transformer-mdx/cra`
+
+
+```js
+// jest.config.js
+module.exports = {
+  transform: {
+    "^.+\\.(md|mdx)$": 'jest-transformer-mdx/cra',
+  },
+};
+```
 
 ## Credits
 
