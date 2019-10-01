@@ -8,9 +8,7 @@ const babel = require('@babel/core')
 function parseFrontMatter(src) {
   const { content, data } = matter(src);
 
-  const code = `export const frontMatter = ${stringifyObject(data)}
-  
-${content}`;
+  const code = `export const frontMatter = ${stringifyObject(data)};${content}`;
 
   return code;
 }
