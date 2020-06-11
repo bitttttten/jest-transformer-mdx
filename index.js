@@ -5,11 +5,11 @@ const stringifyObject = require('stringify-object')
 const mdx = require('@mdx-js/mdx')
 const { process } = require('babel-jest')
 
-function parseFrontMatter(src, options) {
+function parseFrontMatter(src, options = {}) {
     const { content, data } = matter(src)
-    const { frontMatterName } = options
+    const frontMatterName = options.frontMatterName || "frontMatter"
 
-    return `export const ${frontMatterName ? frontMatterName : "frontMatter"} = ${stringifyObject(
+    return `export const ${frontMatterName} = ${stringifyObject(
         data,
     )};
 
