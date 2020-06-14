@@ -1,6 +1,6 @@
 {
   "name": "jest-transformer-mdx",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Jest transformer for MDX",
   "main": "index.js",
   "scripts": {
