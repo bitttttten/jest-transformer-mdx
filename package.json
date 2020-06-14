@@ -6,7 +6,8 @@
   "scripts": {
     "test:index": "jest --config jest.config.js",
     "test:cra": "jest --config jest.config.cra.js",
-    "test": "npm run test:index && npm run test:cra"
+    "test:user-settings": "jest --config jest.config.user-settings.js",
+    "test": "npm run test:index && npm run test:cra && npm run test:user-settings"
   },
   "repository": {
     "type": "git",
