@@ -1,9 +1,10 @@
 'use strict'
 
+const path = require("path")
 const matter = require('gray-matter')
 const stringifyObject = require('stringify-object')
 const mdx = require('@mdx-js/mdx')
-const { process } = require('babel-jest')
+const { process: babelJestProcess } = require('babel-jest')
 
 function parseFrontMatter(src, options = {}) {
     const { content, data } = matter(src)
@@ -25,10 +26,14 @@ function createTransformer(src, filename, config, transformOptions) {
         }
     }
 
+    let mdxOptions = {}
+    if(options.mdxOptions) {
+        mdxOptions = require(path.resolve(process.cwd(), options.mdxOptions))
+    }
     const withFrontMatter = parseFrontMatter(src, options)
-    const jsx = mdx.sync(withFrontMatter)
+    const jsx = mdx.sync(withFrontMatter, {...mdxOptions, filepath: filename})
     const toTransform = `import {mdx} from '@mdx-js/react';${jsx}`
-    return process(toTransform, filename, config, transformOptions).code
+    return babelJestProcess(toTransform, filename, config, transformOptions).code
 }
 
 module.exports = {
