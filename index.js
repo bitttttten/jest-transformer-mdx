@@ -15,7 +15,7 @@ function resolveMdxOptions(src) {
 	return src
 }
 
-function parseFrontMatter(src, frontMatterName = "frontMatterName") {
+function parseFrontMatter(src, frontMatterName = "frontMatter") {
 	const { content, data } = matter(src)
 
 	return `export const ${frontMatterName} = ${stringifyObject(data)};
