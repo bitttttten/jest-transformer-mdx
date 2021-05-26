@@ -172,7 +172,7 @@ module.exports = {
 	transform: {
 		"^.+\\.js$": "babel-jest",
 		"^.+\\.(md|mdx)$": [
-			path.resolve(__dirname, "index.js"),
+			path.resolve(__dirname, "mdx-options.cjs"),
 			{
 				mdxOptions: {
 					rehypePlugins: [rehypeSlug],

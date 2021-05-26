@@ -42,7 +42,9 @@ Look inside [this library's test](https://github.com/bitttttten/jest-transformer
 
 You can configure this transformer by using a different syntax in your jest config, an array of the path to the transformer followed by an options object.
 
-#### Example
+#### Options
+
+#### frontMatterName
 
 ```js
 // jest.config.js
@@ -61,11 +63,28 @@ module.exports = {
 }
 ```
 
-#### frontMatterName
-
 Use this option to rename the exported frontMatter object. This module exports the frontMatter object named as "frontMatter", so [in your component and tests](https://github.com/bitttttten/jest-transformer-mdx/blob/d23701d641f826fface8511e70734073ca2ad29b/test.js#L2) you could only access the frontMatter object through `require('./hello-world.mdx').frontMatter`. If this does not suite your workflow, then use this option to rename it.
 
 #### mdxOptions
+
+```js
+// jest.config.js
+module.exports = {
+	transform: {
+		"^.+\\.(md|mdx)$": [
+			"jest-transformer-mdx/mdx-options",
+			{
+				frontMatterName: "meta",
+				mdxOptions: {
+					rehypePlugins: [require("rehype-slug")],
+				},
+			},
+		],
+	},
+}
+```
+
+Note: edit your transform property to import from `jest-transformer-mdx/mdx-options`.
 
 Use this option to configure mdx. Perhaps you have added some custom plugins, and need that reflected in this transformer. Note that you can either pass in an inline object like the above example, or you can pass in a path to a file that exports your mdx options like the below example, which is useful if your mdx options is not JSON-serializable:
 
@@ -103,7 +122,7 @@ interface Options {
 
 ### create-react-app & configless
 
-You can also use this module in `create-react-app`-like apps where the config is not exposed. Just edit your transform property to import from `jest-transformer-mdx/cra`. This method does not support any of the configuration options mentioned above yet.
+You can also use this module in `create-react-app`-like apps where the config is not exposed. Edit your transform property to import from `jest-transformer-mdx/cra`. This method does not support any of the configuration options mentioned above yet.
 
 ```js
 // jest.config.js

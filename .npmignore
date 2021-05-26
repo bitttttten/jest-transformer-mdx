@@ -2,5 +2,6 @@ babel.config.js
 test.*
 jest.*
 .prettier*
-.github/**
-test/**
+.github/
+test/
+false/

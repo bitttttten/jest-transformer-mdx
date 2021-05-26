@@ -43,13 +43,13 @@ function resolveOptions(config) {
 }
 
 module.exports = {
-	process(src, filepath, config) {
+	async processAsync(src, filepath, config) {
 		const options = resolveOptions(config)
 		const mdxOptions = resolveMdxOptions(options?.mdxOptions)
 
 		const withFrontMatter = parseFrontMatter(src, options?.frontMatterName)
 
-		const jsx = mdx.sync(withFrontMatter, { ...mdxOptions, filepath })
+		const jsx = await mdx(withFrontMatter, { ...mdxOptions, filepath })
 
 		const toTransform = `import {mdx} from '@mdx-js/react';${jsx}`
 

@@ -7,9 +7,10 @@
 		"test:index": "jest --config jest.config.js",
 		"test:cra": "jest --config jest.config.cra.js",
 		"test:user-settings": "jest --config jest.config.user-settings.js",
-		"test:mdx-options": "jest --config jest.config.mdx-options.js",
-		"test:mdx-options-file": "jest --config jest.config.mdx-options-file.js",
-		"test": "npm run test:index && npm run test:cra && npm run test:user-settings && npm run test:mdx-options && npm run test:mdx-options-file"
+		"test:mdx-options-inline": "NODE_OPTIONS=--experimental-vm-modules npx jest --no-cache --config jest.config.mdx-options.js",
+		"test:mdx-options-file": "NODE_OPTIONS=--experimental-vm-modules npx jest --no-cache --config jest.config.mdx-options-file.js",
+		"test:mdx-options": "npm run test:mdx-options-inline && npm run test:mdx-options-inline",
+		"test": "npm run test:index && npm run test:cra && npm run test:user-settings"
 	},
 	"repository": {
 		"type": "git",
