@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/bitttttten/jest-transformer-md/compare/v3.1.0...v3.2.0) (2021-05-26)
+
+
+### Features
+
+* support all jest config formats ([d795a9f](https://github.com/bitttttten/jest-transformer-md/commit/d795a9f3a9eaa31136009a09274af1e4ffbfa812))
+* support babel-jest with versions below 27 too ([832de5d](https://github.com/bitttttten/jest-transformer-md/commit/832de5d2d7141819773324ba6d0f92691cbf3f37))
+
 ## [3.1.0](https://github.com/bitttttten/jest-transformer-md/compare/v3.0.0...v3.1.0) (2021-05-26)
 
 -   use async transformer and await on mdx result ([5c867ef](https://github.com/bitttttten/jest-transformer-md/commit/5c867ef))
