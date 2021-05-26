@@ -22,15 +22,15 @@ function parseFrontMatter(src, options = {}) {
 ${content}`
 }
 
-function createTransformer(src, filepath, config) {
+async function createTransformer(src, filepath, config) {
 	const withFrontMatter = parseFrontMatter(src, config.transformerConfig)
 	const mdxOptions = resolveMdxOptions(config.transformerConfig?.mdxOptions)
-	const jsx = mdx.sync(withFrontMatter, { ...mdxOptions, filepath })
+	const jsx = await mdx(withFrontMatter, { ...mdxOptions, filepath })
 	const toTransform = `import {mdx} from '@mdx-js/react';${jsx}`
 
 	return babelJest.process(toTransform, filepath, config).code
 }
 
 module.exports = {
-	process: createTransformer,
+	processAsync: createTransformer,
 }
