@@ -16,5 +16,7 @@ jobs:
                   node-version: 14.x
             - name: 📥 Install deps
               run: yarn
+            - name: envinfo
+              run: npx envinfo --preset jest
             - name: 🧪 Test
               run: yarn test
