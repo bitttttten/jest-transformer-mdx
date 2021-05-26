@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [3.1.0](https://github.com/bitttttten/jest-transformer-md/compare/v3.0.0...v3.1.0) (2021-05-26)
 
+-   use async transformer and await on mdx result ([5c867ef](https://github.com/bitttttten/jest-transformer-md/commit/5c867ef))
+
 ## 3.0.0 (2021-05-26)
 
 ### Features
