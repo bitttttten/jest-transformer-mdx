@@ -1,3 +1,5 @@
 babel.config.js
 test.*
 jest.*
+.prettier*
+.github/**
