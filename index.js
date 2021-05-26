@@ -6,22 +6,6 @@ const stringifyObject = require("stringify-object")
 const mdx = require("@mdx-js/mdx")
 const babelJest = require("babel-jest")
 
-async function processAsync(src, filepath, config) {
-	const options = resolveOptions(config)
-	const mdxOptions = resolveMdxOptions(options?.mdxOptions)
-
-	const withFrontMatter = parseFrontMatter(src, options?.frontMatterName)
-
-	const jsx = await mdx(withFrontMatter, { ...mdxOptions, filepath })
-
-	const toTransform = `import {mdx} from '@mdx-js/react';${jsx}`
-
-	// supports babel-jest@27 (which exports with .default) and older versions
-	// see: https://github.com/bitttttten/jest-transformer-mdx/issues/22
-	const babelProcess = babelJest.default?.process ?? babelJest.process
-	return babelProcess(toTransform, filepath, config).code
-}
-
 // we support either a path to a file, or the options itself
 // see: https://github.com/bitttttten/jest-transformer-mdx/pull/20
 function resolveMdxOptions(src) {
@@ -59,5 +43,19 @@ function resolveOptions(config) {
 }
 
 module.exports = {
-	processAsync: processAsync,
+	async processAsync(src, filepath, config) {
+		const options = resolveOptions(config)
+		const mdxOptions = resolveMdxOptions(options?.mdxOptions)
+
+		const withFrontMatter = parseFrontMatter(src, options?.frontMatterName)
+
+		const jsx = await mdx(withFrontMatter, { ...mdxOptions, filepath })
+
+		const toTransform = `import {mdx} from '@mdx-js/react';${jsx}`
+
+		// supports babel-jest@27 (which exports with .default) and older versions
+		// see: https://github.com/bitttttten/jest-transformer-mdx/issues/22
+		const babelProcess = babelJest.default?.process ?? babelJest.process
+		return babelProcess(toTransform, filepath, config).code
+	},
 }
