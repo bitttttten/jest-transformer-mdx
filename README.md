@@ -19,14 +19,20 @@ Jest transformer for [MDX](https://mdxjs.com/) with [frontMatter](https://github
 ```js
 // jest.config.js
 module.exports = {
-  // A map from regular expressions to paths to transformers
-  transform: {
-    "^.+\\.(md|mdx)$": 'jest-transformer-mdx',
-  },
-};
+	// A map from regular expressions to paths to transformers
+	transform: {
+		"^.+\\.(md|mdx)$": "jest-transformer-mdx",
+	},
+}
 ```
 
 And that should be it! `jest-transformer-mdx` will pick up your babel config and use your jest config.
+
+### jest 26 or below
+
+To support jest 26 or below, please install at version 2. Version 3 only supports jest 27 and above.
+
+`yarn add jest-transformer-mdx@2`
 
 ### Example
 
@@ -41,22 +47,57 @@ You can configure this transformer by using a different syntax in your jest conf
 ```js
 // jest.config.js
 module.exports = {
-  transform: {
-    "^.+\\.(md|mdx)$": ['jest-transformer-mdx', { frontMatterName: "meta" }]
-  },
-};
+	transform: {
+		"^.+\\.(md|mdx)$": [
+			"jest-transformer-mdx",
+			{
+				frontMatterName: "meta",
+				mdxOptions: {
+					rehypePlugins: [require("rehype-slug")],
+				},
+			},
+		],
+	},
+}
 ```
 
 #### frontMatterName
 
 Use this option to rename the exported frontMatter object. This module exports the frontMatter object named as "frontMatter", so [in your component and tests](https://github.com/bitttttten/jest-transformer-mdx/blob/d23701d641f826fface8511e70734073ca2ad29b/test.js#L2) you could only access the frontMatter object through `require('./hello-world.mdx').frontMatter`. If this does not suite your workflow, then use this option to rename it.
 
-#### Interface 
+#### mdxOptions
+
+Use this option to configure mdx. Perhaps you have added some custom plugins, and need that reflected in this transformer. Note that you can either pass in an inline object like the above example, or you can pass in a path to a file that exports your mdx options like the below example, which is useful if your mdx options is not JSON-serializable:
+
+```js
+// jest.config.js
+module.exports = {
+	transform: {
+		"^.+\\.(md|mdx)$": [
+			"jest-transformer-mdx",
+			{
+				mdxOptions: "config/mdx-options.js",
+			},
+		],
+	},
+}
+```
+
+```js
+// config/mdx-options.js
+const options = {
+	rehypePlugins: [rehypeSlug],
+}
+
+module.exports = options
+```
+
+#### Interface
 
 ```ts
 interface Options {
-  // rename the object that the frontmatter object will get exported as
-  frontMatterName?: string
+	// rename the object that the frontmatter object will get exported as
+	frontMatterName?: string
 }
 ```
 
@@ -64,14 +105,13 @@ interface Options {
 
 You can also use this module in `create-react-app`-like apps where the config is not exposed. Just edit your transform property to import from `jest-transformer-mdx/cra`. This method does not support any of the configuration options mentioned above yet.
 
-
 ```js
 // jest.config.js
 module.exports = {
-  transform: {
-    "^.+\\.(md|mdx)$": 'jest-transformer-mdx/cra',
-  },
-};
+	transform: {
+		"^.+\\.(md|mdx)$": "jest-transformer-mdx/cra",
+	},
+}
 ```
 
 ## Credits

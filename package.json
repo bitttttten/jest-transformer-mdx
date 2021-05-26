@@ -7,7 +7,9 @@
 		"test:index": "jest --config jest.config.js",
 		"test:cra": "jest --config jest.config.cra.js",
 		"test:user-settings": "jest --config jest.config.user-settings.js",
-		"test": "npm run test:index && npm run test:cra && npm run test:user-settings"
+		"test:mdx-options": "jest --config jest.config.mdx-options.js",
+		"test:mdx-options-file": "jest --config jest.config.mdx-options-file.js",
+		"test": "npm run test:index && npm run test:cra && npm run test:user-settings && npm run test:mdx-options && npm run test:mdx-options-file"
 	},
 	"repository": {
 		"type": "git",
@@ -33,10 +35,12 @@
 		"babel-preset-react-app": "^9.0.0",
 		"gray-matter": "^4.0.2",
 		"react": "^16.8.6",
+		"rehype-slug": "^4.0.1",
 		"stringify-object": "^3.3.0"
 	},
 	"peerDependencies": {
-		"babel-jest": "^24.8.0"
+		"babel-jest": "^27.0.1",
+		"jest": "^27.0.1"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.14.3",
@@ -44,6 +48,7 @@
 		"@testing-library/react": "^8.0.4",
 		"jest": "^27.0.1",
 		"prettier": "^1.18.2",
-		"react-dom": "^16.8.6"
+		"react-dom": "^16.8.6",
+		"standard-version": "^9.3.0"
 	}
 }
