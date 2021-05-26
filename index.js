@@ -59,5 +59,5 @@ function resolveOptions(config) {
 }
 
 module.exports = {
-	process: processAsync,
+	processAsync: processAsync,
 }
