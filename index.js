@@ -6,7 +6,7 @@ const stringifyObject = require("stringify-object")
 const mdx = require("@mdx-js/mdx")
 const babelJest = require("babel-jest")
 
-async function createTransformer(src, filepath, config) {
+async function processAsync(src, filepath, config) {
 	const options = resolveOptions(config)
 	const mdxOptions = resolveMdxOptions(options?.mdxOptions)
 
@@ -59,5 +59,5 @@ function resolveOptions(config) {
 }
 
 module.exports = {
-	processAsync: createTransformer,
+	process: processAsync,
 }
